@@ -28,7 +28,7 @@ describe('generate_1d ', function() {
 
     expect(testResult).to.have.length(4);
     for(var i = 0; i < testResult.length; i++){
-      expected(testResult).to.satisfy(function (val) {
+      expect(testResult[i]).to.satisfy(function (val) {
         return val === 0 || val === 1;
       });
     }
@@ -40,25 +40,49 @@ describe('generate_1d ', function() {
     expect(testResult).to.be.a("array");
     expect(testResult).to.have.length(0);
   });
-
 });
 
 describe('generate_2d', function() {
-  it('should return an array of length 3', function(){     
+  it('should return an array of length 3, each containing arrays with 3 random boolean values', function(){     
     var testResult = mda.generate_2d();
 
     expect(testResult).to.be.a("array");
     expect(testResult).to.have.length(3);
     for(var i = 0; i < testResult.length; i++){
-    expect(testResult[i]).to.have.length(3);
-    expect(testResult[i]).to.satisfy(function (val) {
-      return val === 0 || val === 1;
-    });
-  }
-
+      expect(testResult[i]).to.have.length(3);
+      expect(testResult[i]).to.satisfy(function (val) {
+        return val === 0 || val === 1;
+      });
+    }
   });
 
-  it("should take a single argument, 4, and return an array with length 4 and 3 random boolean values in each", function() {
+  it("should take a single argument, 4, and return an array with length 4 and 3 random boolean values each", function() {
+    var testResult = mda.generate_2d(4);
+
+    expect(testResult).to.be.a("array");
+    expect(testResult.to.have.length(4));
+    for(var i = 0; i < testResult.length; i++){
+      expect(testResult[i]).to.have.length(3);
+      expect(testResult[i]).to.satisfy(function (val) {
+        return val === 0 || val === 1;
+      });
+    }
+  });
+
+  it("should take two arguments (5 and 4), return an array (length 5) containing arrays (length 4) with random boolean values", function() {
+    var testResult = mda.generate_2d(5,4);
+
+    expect(testResult).to.be.a("array");
+    expect(testResult).to.have.length(5);
+    for(var i = 0; i < testResult.length; i++){
+      expect(testResult[i]).to.have.length(4);
+      expect(testResult[i]).to.satisfy(function (val) {
+        return val === 0 || val === 1;
+      });
+    }
+  });
+
+  it("should ", function() {
     
   });
   
